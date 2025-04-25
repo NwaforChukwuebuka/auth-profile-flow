@@ -1,4 +1,3 @@
-
 import express from "express";
 import cors from "cors";
 import session from "express-session";
@@ -16,13 +15,6 @@ interface User {
   lastName: string;
   emailDomain: string;
   password: string;
-}
-
-// Declare module for session type augmentation
-declare module "express-session" {
-  interface SessionData {
-    userId: string;
-  }
 }
 
 // In-memory user storage
