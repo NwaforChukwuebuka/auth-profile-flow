@@ -1,73 +1,94 @@
-# Welcome to your Lovable project
 
-## Project info
+# Auth Profile Flow
 
-**URL**: https://lovable.dev/projects/15ec0cbc-59b0-41ec-8342-bfb02ee7e7d8
+A full-stack user authentication and profile management application built with React, TypeScript, and Express.
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+- User authentication (signup, login, logout)
+- Form validation with Formik and Yup
+- Session management with express-session
+- Automatic parsing of user data (name, email domain)
+- Protected routes
+- Profile display
 
-**Use Lovable**
+## Project Structure
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/15ec0cbc-59b0-41ec-8342-bfb02ee7e7d8) and start prompting.
+- Frontend: React + TypeScript application with form handling and routing
+- Backend: Express server with in-memory user storage
 
-Changes made via Lovable will be committed automatically to this repo.
+## Running the Project
 
-**Use your preferred IDE**
+### Frontend
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+1. Install dependencies:
+```
+npm install
+```
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+2. Start the development server:
+```
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The frontend will be available at `http://localhost:8080`.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Backend
 
-**Use GitHub Codespaces**
+1. Navigate to the server directory:
+```
+cd src/server
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+2. Install dependencies:
+```
+npm install
+```
 
-## What technologies are used for this project?
+3. Start the server:
+```
+npm run dev
+```
 
-This project is built with:
+The API server will run at `http://localhost:3001`.
 
-- Vite
-- TypeScript
+## API Endpoints
+
+- `POST /signup` - Create a new user
+- `POST /login` - Authenticate user
+- `POST /logout` - End user session
+- `GET /me` - Get logged-in user profile
+
+## Technologies Used
+
 - React
-- shadcn-ui
+- TypeScript
+- Express
+- Formik + Yup
+- Axios
 - Tailwind CSS
+- shadcn/ui
 
-## How can I deploy this project?
+## User Data Structure
 
-Simply open [Lovable](https://lovable.dev/projects/15ec0cbc-59b0-41ec-8342-bfb02ee7e7d8) and click on Share -> Publish.
+```typescript
+interface User {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  age: number;
+  firstName: string;
+  lastName: string;
+  emailDomain: string;
+  password: string; // In a real app, this would be hashed
+}
+```
 
-## Can I connect a custom domain to my Lovable project?
+## Validation Rules
 
-Yes, you can!
+- Email must be valid format
+- Phone must match common patterns
+- Age must be a number ≥ 13
+- All fields are required
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
