@@ -6,6 +6,14 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": [
+      "node",
+      "express",
+      "cors",
+      "express-session",
+      "body-parser",
+      "uuid"
+    ]
   }
 }

@@ -18,6 +18,13 @@ interface User {
   password: string;
 }
 
+// Declare module for session type augmentation
+declare module "express-session" {
+  interface SessionData {
+    userId: string;
+  }
+}
+
 // In-memory user storage
 const users: User[] = [];
 
@@ -68,13 +75,6 @@ app.use(
     },
   })
 );
-
-// Declare session variables
-declare module "express-session" {
-  interface SessionData {
-    userId: string;
-  }
-}
 
 // Validation middleware
 const validateEmail = (email: string) => {

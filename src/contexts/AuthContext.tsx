@@ -33,15 +33,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
-  const checkAuth = async () => {
+  const checkAuth = async (): Promise<void> => {
     try {
       setIsLoading(true);
       const response = await authApi.getProfile();
       setUser(response.data);
-      return true;
     } catch (error) {
       setUser(null);
-      return false;
     } finally {
       setIsLoading(false);
     }
