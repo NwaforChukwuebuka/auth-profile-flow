@@ -8,7 +8,7 @@ import { Separator } from "@/components/ui/separator";
 import { LogOut, User } from "lucide-react";
 
 const ProfilePage: React.FC = () => {
-  const { user, isLoading, isAuthenticated, logout } = useAuth();
+  const { profile, isLoading, isAuthenticated, logout } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const ProfilePage: React.FC = () => {
     );
   }
 
-  if (!user) return null;
+  if (!profile) return null;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20 py-10">
@@ -44,17 +44,17 @@ const ProfilePage: React.FC = () => {
               <div className="bg-primary rounded-full p-3">
                 <User className="h-6 w-6 text-white" />
               </div>
-              <CardTitle className="text-2xl">{user.name}</CardTitle>
+              <CardTitle className="text-2xl">{profile.name}</CardTitle>
             </div>
           </CardHeader>
           <CardContent className="pt-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <ProfileItem label="First Name" value={user.firstName} />
-              <ProfileItem label="Last Name" value={user.lastName || "-"} />
-              <ProfileItem label="Email" value={user.email} />
-              <ProfileItem label="Email Domain" value={user.emailDomain} />
-              <ProfileItem label="Phone" value={user.phone} />
-              <ProfileItem label="Age" value={user.age.toString()} />
+              <ProfileItem label="First Name" value={profile.first_name || "-"} />
+              <ProfileItem label="Last Name" value={profile.last_name || "-"} />
+              <ProfileItem label="Email" value={profile.email} />
+              <ProfileItem label="Email Domain" value={profile.email_domain || "-"} />
+              <ProfileItem label="Phone" value={profile.phone || "-"} />
+              <ProfileItem label="Age" value={profile.age ? profile.age.toString() : "-"} />
             </div>
           </CardContent>
         </Card>

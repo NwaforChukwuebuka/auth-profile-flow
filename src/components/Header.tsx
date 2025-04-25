@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { LogIn, LogOut, User } from "lucide-react";
 
 const Header: React.FC = () => {
-  const { isAuthenticated, user, logout } = useAuth();
+  const { isAuthenticated, profile, logout } = useAuth();
 
   return (
     <header className="border-b py-4">
@@ -19,7 +19,7 @@ const Header: React.FC = () => {
           {isAuthenticated ? (
             <>
               <div className="hidden sm:block text-sm">
-                Welcome, <span className="font-medium">{user?.firstName}</span>
+                Welcome, <span className="font-medium">{profile?.first_name || 'User'}</span>
               </div>
               <Link to="/profile">
                 <Button variant="outline" size="sm">
